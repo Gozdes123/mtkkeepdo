@@ -202,7 +202,6 @@ export default {
       newarray: [],
       newarray2: [],
       timetarget: null,
-      time: null,
     };
   },
   methods: {
@@ -309,6 +308,7 @@ export default {
     },
     search() {
       if (this.keyWord !== "") {
+        this.timetarget = dayjs(this.timetarget).format("YYYY/MM/DD");
         this.newarray = this.newarray2.filter(
           (searchResult) =>
             searchResult.launch_date_local.includes(this.keyWord) ||
@@ -333,9 +333,9 @@ export default {
       }
     },
     DateSearch() {
-      this.time = dayjs(this.timetarget).format("YYYY/MM/DD");
+      this.timetarget = dayjs(this.timetarget).format("YYYY/MM/DD");
       this.newarray = this.newarray2.filter((searchResult) => {
-        return searchResult.launch_date_local.includes(this.time);
+        return searchResult.launch_date_local.includes(this.timetarget);
       });
       this.zero = 0;
     },
@@ -353,8 +353,4 @@ export default {
 };
 </script>
 
-<style>
-.red {
-  coloe: #f9c27b57;
-}
-</style>
+<style></style>
